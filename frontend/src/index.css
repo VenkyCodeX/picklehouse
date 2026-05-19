@@ -1,0 +1,120 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    @apply font-poppins bg-white text-brand-black;
+    cursor: none;
+  }
+}
+
+@layer components {
+  /* Primary CTA — Red */
+  .btn-primary {
+    @apply bg-brand-red hover:bg-brand-red-deep text-white font-semibold px-6 py-3 rounded-full transition-all duration-300 shadow-lg hover:shadow-brand-red/40 hover:scale-105 active:scale-95 inline-block;
+  }
+  /* Secondary CTA — Yellow */
+  .btn-secondary {
+    @apply bg-brand-yellow hover:bg-brand-yellow-deep text-brand-black font-semibold px-6 py-3 rounded-full transition-all duration-300 shadow-lg hover:scale-105 active:scale-95 inline-block;
+  }
+  /* Outline — Black */
+  .btn-outline {
+    @apply border-2 border-brand-black text-brand-black hover:bg-brand-black hover:text-white font-semibold px-6 py-3 rounded-full transition-all duration-300 hover:scale-105 active:scale-95 inline-block;
+  }
+  /* Outline — Yellow */
+  .btn-outline-yellow {
+    @apply border-2 border-brand-yellow text-brand-black hover:bg-brand-yellow font-semibold px-6 py-3 rounded-full transition-all duration-300 hover:scale-105 active:scale-95 inline-block;
+  }
+  .section-label {
+    @apply text-brand-red font-poppins font-semibold text-xs uppercase tracking-[0.2em];
+  }
+  .section-title {
+    @apply font-playfair text-4xl md:text-5xl font-bold;
+  }
+  .card {
+    @apply bg-white rounded-2xl shadow-md border-t-4 border-brand-yellow hover:shadow-xl hover:-translate-y-1 transition-all duration-300;
+  }
+  .badge-red {
+    @apply bg-brand-red text-white text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wide;
+  }
+  .badge-yellow {
+    @apply bg-brand-yellow text-brand-black text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wide;
+  }
+}
+
+/* Custom cursor */
+.cursor-dot {
+  width: 8px; height: 8px;
+  background: #CC0000;
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s;
+}
+.cursor-ring {
+  width: 36px; height: 36px;
+  border: 2px solid rgba(204,0,0,0.5);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: all 0.15s ease;
+}
+.cursor-ring.hovering {
+  width: 52px; height: 52px;
+  background: rgba(255,215,0,0.15);
+  border-color: #FFD700;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #FFF8CC; }
+::-webkit-scrollbar-thumb { background: #CC0000; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #9B0000; }
+
+/* Skeleton — yellow shimmer */
+.skeleton {
+  background: linear-gradient(90deg, #FFF8CC 25%, #FFD700 50%, #FFF8CC 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 8px;
+}
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* WhatsApp pulse */
+@keyframes waPulse {
+  0% { box-shadow: 0 0 0 0 rgba(37,211,102,0.7); }
+  70% { box-shadow: 0 0 0 15px rgba(37,211,102,0); }
+  100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); }
+}
+.wa-pulse { animation: waPulse 2s infinite; }
+
+/* Indian border pattern */
+.indian-border {
+  border-image: repeating-linear-gradient(
+    90deg,
+    #FFD700 0px, #FFD700 8px,
+    #CC0000 8px, #CC0000 16px
+  ) 4;
+  border-width: 4px;
+  border-style: solid;
+}
+
+/* Masonry */
+.masonry-grid { columns: 2; gap: 1rem; }
+@media (min-width: 768px) { .masonry-grid { columns: 3; } }
+@media (min-width: 1024px) { .masonry-grid { columns: 4; } }
+.masonry-item { break-inside: avoid; margin-bottom: 1rem; }
+
+/* Dark mode overrides */
+.dark body { background: #0D0D0D; color: #FFFFFF; }
+.dark .card { background: #1A1A1A; border-color: #FFD700; }
