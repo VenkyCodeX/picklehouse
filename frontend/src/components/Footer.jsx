@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Phone, MapPin, Clock, Instagram, Facebook, MessageCircle } from 'lucide-react';
-import logo from '../assets/pickleHouseLogo2.png';
+import logo from '../assets/pickleHouseLogoMain.png';
 
 const quickLinks = [
   { label: 'Home', path: '/' },
@@ -26,7 +26,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="lg:col-span-1">
             <Link to="/" className="inline-block mb-4">
-              <img src={logo} alt="Pickle House" className="h-20 w-auto object-contain" />
+              <img src={logo} alt="Pickle House" className="h-12 w-auto object-contain" />
             </Link>
             <p className="font-telugu text-white/50 text-sm leading-relaxed mb-4">
               శ్రేష్టమైన నువ్వుల నూనె తో తయారు చేయబడిన పచ్చళ్ళు

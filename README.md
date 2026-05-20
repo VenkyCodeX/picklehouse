@@ -53,7 +53,19 @@ npm install
 npm run dev
 ```
 
-### 3. Seed Database
+### 3. Vercel Deployment
+
+To deploy the frontend on Vercel:
+
+1. Connect the `picklehouse` GitHub repository to Vercel.
+2. Set the project root to the `frontend` folder.
+3. In Vercel Environment Variables, add:
+   - `VITE_API_URL=https://your-railway-backend.up.railway.app/api`
+4. Set `Build Command` to `npm run build` and `Output Directory` to `dist` if Vercel does not detect them automatically.
+
+> If your backend is hosted on Railway, also set `CLIENT_URL` in Railway to your Vercel deployment domain.
+
+### 4. Seed Database
 
 After starting the backend, visit the Admin panel at `/admin` and click **"🌱 Seed Data"** to populate products and reviews.
 

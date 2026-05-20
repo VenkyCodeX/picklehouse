@@ -20,7 +20,7 @@ export default function QuickViewModal({ product, onClose }) {
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
       >
-        <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" onClick={onClose} />
+        <div className="absolute inset-0 bg-brand-black/70 backdrop-blur-sm" onClick={onClose} />
         <motion.div
           className="relative bg-white rounded-3xl overflow-hidden max-w-2xl w-full shadow-2xl border-t-4 border-brand-yellow"
           initial={{ scale: 0.8, opacity: 0, y: 40 }}

@@ -115,6 +115,3 @@
 @media (min-width: 1024px) { .masonry-grid { columns: 4; } }
 .masonry-item { break-inside: avoid; margin-bottom: 1rem; }
 
-/* Dark mode overrides */
-.dark body { background: #0D0D0D; color: #FFFFFF; }
-.dark .card { background: #1A1A1A; border-color: #FFD700; }

@@ -57,15 +57,15 @@ function PageTransition({ children }) {
   );
 }
 
-function AppContent({ darkMode, toggleDark }) {
+function AppContent() {
   useCursor();
   const location = useLocation();
   const isAdmin = location.pathname.startsWith('/admin');
 
   return (
-    <div className={darkMode ? 'dark' : ''}>
+    <div>
       <div className="min-h-screen bg-white transition-colors duration-300">
-        {!isAdmin && <Navbar darkMode={darkMode} toggleDark={toggleDark} />}
+        {!isAdmin && <Navbar />}
         <CartDrawer />
         <PageTransition>
           <Routes>
@@ -102,14 +102,6 @@ function AppContent({ darkMode, toggleDark }) {
 
 export default function App() {
   const [loading, setLoading] = useState(true);
-  const [darkMode, setDarkMode] = useState(() => localStorage.getItem('pickleDark') === 'true');
-
-  const toggleDark = () => {
-    setDarkMode(d => {
-      localStorage.setItem('pickleDark', !d);
-      return !d;
-    });
-  };
 
   return (
     <BrowserRouter>
@@ -119,7 +111,7 @@ export default function App() {
             <AnimatePresence>
               {loading && <LoadingScreen key="loader" onComplete={() => setLoading(false)} />}
             </AnimatePresence>
-            {!loading && <AppContent darkMode={darkMode} toggleDark={toggleDark} />}
+            {!loading && <AppContent />}
           </LangProvider>
         </CartProvider>
       </AuthProvider>

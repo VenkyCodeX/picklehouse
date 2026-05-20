@@ -347,7 +347,7 @@ export default function Admin() {
 
       {/* Product Form Modal */}
       {showForm && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-brand-black/70 backdrop-blur-sm">
           <motion.div
             className="bg-white rounded-3xl p-8 w-full max-w-2xl max-h-[90vh] overflow-y-auto shadow-2xl border-t-4 border-brand-yellow"
             initial={{ scale: 0.9, opacity: 0 }}
@@ -514,7 +514,7 @@ export default function Admin() {
         </div>
       )}
       {selectedOrder && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-brand-black/70 backdrop-blur-sm">
           <motion.div
             className="bg-white rounded-3xl p-8 w-full max-w-3xl max-h-[90vh] overflow-y-auto shadow-2xl border-t-4 border-brand-red"
             initial={{ scale: 0.9, opacity: 0 }}

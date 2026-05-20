@@ -1,10 +1,8 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import nonVegBg from '../assets/HomebgNon-Veg.png';
 import vegBg from '../assets/HomeBgVeg.png';
 import mangoBg from '../assets/HomePageBgMango.png';
-import nonVegBgMobile from '../assets/HomebgNon-VegMobile.png';
 import vegBgMobile from '../assets/HomeBgVegMobile.png';
 import mangoBgMobile from '../assets/HomePageBgMangoMobile.png';
 
@@ -21,16 +19,11 @@ const slides = [
     title: 'Farm Fresh\nVegetable Pickles',
     subtitle: 'Handpicked vegetables, traditional Hyderabadi masalas, zero preservatives. Pure goodness in every jar.',
   },
-  {
-    image: nonVegBg,
-    imageMobile: nonVegBgMobile,
-    title: 'Bold & Spicy\nNon-Veg Pickles',
-    subtitle: 'A bold twist on traditional flavours — chicken, mutton & prawn pickles crafted to excite your taste buds.',
-  },
 ];
 
 export default function Hero() {
   const [current, setCurrent] = useState(0);
+  const [direction, setDirection] = useState(1);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
   useEffect(() => {
@@ -40,7 +33,10 @@ export default function Hero() {
   }, []);
 
   useEffect(() => {
-    const timer = setInterval(() => setCurrent(p => (p + 1) % slides.length), 8000);
+    const timer = setInterval(() => {
+      setDirection(1);
+      setCurrent(p => (p + 1) % slides.length);
+    }, 8000);
     return () => clearInterval(timer);
   }, []);
 
@@ -48,22 +44,21 @@ export default function Hero() {
     <section className="relative w-full h-screen overflow-hidden">
 
       {/* Slides */}
-      <AnimatePresence mode="wait">
+      <AnimatePresence mode="sync">
         <motion.div
           key={current}
           className="absolute inset-0"
-          initial={{ opacity: 0, scale: 1.05 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.98 }}
-          transition={{ duration: 0.9, ease: 'easeInOut' }}
+          initial={{ opacity: 0, x: direction * 120 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: direction * -120 }}
+          transition={{ duration: 0.8, ease: 'easeInOut' }}
         >
           <img
             src={isMobile ? slides[current].imageMobile : slides[current].image}
             alt={slides[current].title}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover filter brightness-95 saturate-90"
           />
-          {/* Dark overlay */}
-          <div className="absolute inset-0 bg-brand-black/55" />
+          <div className="absolute inset-0 bg-brand-brown/20" />
         </motion.div>
       </AnimatePresence>
 
@@ -86,7 +81,7 @@ export default function Hero() {
             </p>
             <Link
               to="/products"
-              className="inline-block bg-brand-red text-white font-bold text-base px-8 py-4 hover:bg-brand-red-deep transition-colors duration-200"
+              className="inline-block bg-brand-brown text-white font-bold text-base px-8 py-4 hover:bg-brand-brown/90 transition-colors duration-200"
             >
               Shop Now
             </Link>
@@ -99,7 +94,10 @@ export default function Hero() {
         {slides.map((_, i) => (
           <button
             key={i}
-            onClick={() => setCurrent(i)}
+            onClick={() => {
+              setDirection(i > current ? 1 : -1);
+              setCurrent(i);
+            }}
             className={`transition-all duration-300 rounded-full border-2 border-white ${
               i === current ? 'w-4 h-4 bg-white' : 'w-3 h-3 bg-transparent'
             }`}

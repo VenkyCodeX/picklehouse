@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import logo from '../assets/pickleHouseLogo2.png';
+import logo from '../assets/pickleHouseLogoMain.png';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ShoppingCart, Menu, X, Sun, Moon, User } from 'lucide-react';
@@ -17,7 +17,7 @@ const navLinks = [
   { key: 'contact', path: '/contact' },
 ];
 
-export default function Navbar({ darkMode, toggleDark }) {
+export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { count, toggleDrawer } = useCart();
@@ -49,7 +49,7 @@ export default function Navbar({ darkMode, toggleDark }) {
               <motion.img
                 src={logo}
                 alt="Pickle House"
-                className="h-32 md:h-36 w-auto object-contain"
+                className="h-16 md:h-20 w-auto object-contain"
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.2 }}
               />
@@ -86,9 +86,6 @@ export default function Navbar({ darkMode, toggleDark }) {
                 {lang === 'en' ? 'తెలుగు' : 'English'}
               </button>
 
-              <button onClick={toggleDark} className="p-2 rounded-full text-white/70 hover:text-brand-yellow transition-all">
-                {darkMode ? <Sun size={18} /> : <Moon size={18} />}
-              </button>
 
               <button onClick={toggleDrawer} className="relative p-2 rounded-full text-brand-yellow hover:bg-brand-yellow/10 transition-all">
                 <ShoppingCart size={22} />
@@ -104,17 +101,13 @@ export default function Navbar({ darkMode, toggleDark }) {
                 )}
               </button>
 
-              {user ? (
+              {user && (
                 <Link
                   to="/profile"
                   className="w-8 h-8 bg-brand-yellow rounded-full flex items-center justify-center text-brand-black font-bold text-sm hover:bg-brand-yellow-deep transition-all"
                   title={user.name}
                 >
                   {user.name?.[0]?.toUpperCase()}
-                </Link>
-              ) : (
-                <Link to="/login" className="hidden sm:flex items-center gap-1 px-3 py-1.5 rounded-full border border-white/30 text-white text-xs font-semibold hover:bg-white/10 transition-all">
-                  <User size={14} /> Sign In
                 </Link>
               )}
 
@@ -135,7 +128,7 @@ export default function Navbar({ darkMode, toggleDark }) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
-            <div className="absolute inset-0 bg-black/70" onClick={() => setMobileOpen(false)} />
+            <div className="absolute inset-0 bg-brand-black/70" onClick={() => setMobileOpen(false)} />
             <motion.div
               className="absolute top-0 right-0 h-full w-72 bg-brand-black border-l-2 border-brand-yellow flex flex-col pt-20 pb-8 px-6"
               initial={{ x: '100%' }}
@@ -159,20 +152,15 @@ export default function Navbar({ darkMode, toggleDark }) {
                 ))}
               </div>
               <div className="mt-auto flex flex-col gap-3">
-                {user ? (
+                {user && (
                   <Link to="/profile" className="flex items-center gap-2 px-4 py-3 rounded-xl text-white hover:bg-white/5 transition-all">
                     <div className="w-7 h-7 bg-brand-yellow rounded-full flex items-center justify-center text-brand-black text-xs font-bold">{user.name?.[0]?.toUpperCase()}</div>
                     {user.name}
                   </Link>
-                ) : (
-                  <Link to="/login" className="btn-primary text-center text-sm">Sign In</Link>
                 )}
                 <div className="flex items-center gap-3">
                   <button onClick={toggleLang} className="flex-1 py-2 rounded-full border border-brand-yellow/40 text-brand-yellow text-sm font-semibold hover:bg-brand-yellow/10 transition-all">
                     {lang === 'en' ? 'తెలుగు' : 'English'}
-                  </button>
-                  <button onClick={toggleDark} className="p-2 rounded-full text-white hover:bg-white/10 transition-all">
-                    {darkMode ? <Sun size={18} /> : <Moon size={18} />}
                   </button>
                 </div>
               </div>

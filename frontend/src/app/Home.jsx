@@ -101,11 +101,11 @@ export default function Home() {
       <Hero />
 
       {/* ── MARQUEE STRIP ── */}
-      <div className="bg-brand-red py-3 overflow-hidden">
+      <div className="bg-white py-3 overflow-hidden">
         <div className="flex animate-marquee whitespace-nowrap">
           {[...marqueeItems, ...marqueeItems].map((item, i) => (
-            <span key={i} className="text-white font-poppins font-medium text-sm mx-8">
-              {item} <span className="text-brand-yellow mx-4">·</span>
+            <span key={i} className="text-brand-black/70 font-poppins font-medium text-sm mx-8">
+              {item} <span className="text-brand-brown mx-4">·</span>
             </span>
           ))}
         </div>
@@ -124,17 +124,19 @@ export default function Home() {
         </div>
         {featured.length > 0 && <FeaturedStrip products={featured} onQuickView={setQuickView} />}
         <div className="text-center mt-10">
-          <Link to="/products" className="btn-primary">View All Products →</Link>
+          <Link to="/products" className="inline-block bg-brand-brown text-white font-bold text-base px-6 py-3 rounded-full shadow-sm hover:bg-brand-brown/90 transition-colors">
+            View All Products →
+          </Link>
         </div>
       </section>
 
       {/* ── ABOUT / STORY ── */}
-      <section className="py-20 bg-brand-black">
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <FadeUp>
               <div className="relative">
-                <div className="rounded-3xl overflow-hidden shadow-2xl border-4 border-brand-yellow">
+                <div className="rounded-3xl overflow-hidden shadow-2xl border-4 border-brand-brown">
                   <img
                     src="https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=700&q=80"
                     alt="Pickle House Shop"
@@ -143,7 +145,7 @@ export default function Home() {
                   />
                 </div>
                 <motion.div
-                  className="absolute -top-5 -right-5 bg-brand-yellow text-brand-black rounded-2xl p-4 shadow-xl"
+                  className="absolute -top-5 -right-5 bg-brand-brown/10 text-brand-black rounded-2xl p-4 shadow-xl"
                   animate={{ y: [0, -8, 0] }}
                   transition={{ duration: 3, repeat: Infinity }}
                 >
@@ -151,7 +153,7 @@ export default function Home() {
                   <p className="text-xs font-poppins font-semibold">Happy Families</p>
                 </motion.div>
                 <motion.div
-                  className="absolute -bottom-5 -left-5 bg-brand-red text-white rounded-2xl p-4 shadow-xl"
+                  className="absolute -bottom-5 -left-5 bg-brand-brown text-white rounded-2xl p-4 shadow-xl"
                   animate={{ y: [0, 8, 0] }}
                   transition={{ duration: 3.5, repeat: Infinity }}
                 >
@@ -163,12 +165,12 @@ export default function Home() {
 
             <FadeUp delay={0.2}>
               <div>
-                <p className="section-label text-brand-yellow mb-3">Our Story</p>
-                <h2 className="font-playfair text-4xl md:text-5xl font-bold text-white leading-tight mb-6">
+                <p className="section-label text-brand-brown mb-3">Our Story</p>
+                <h2 className="font-playfair text-4xl md:text-5xl font-bold text-brand-black leading-tight mb-6">
                   Made with Love,<br />Tradition & Pure<br />
-                  <span className="text-brand-yellow">Sesame Oil.</span>
+                  <span className="text-brand-brown">Sesame Oil.</span>
                 </h2>
-                <p className="text-white/70 font-poppins leading-relaxed mb-6">
+                <p className="text-brand-black/70 font-poppins leading-relaxed mb-6">
                   For years, we have been crafting pickles the way our grandmothers taught us — with pure sesame oil,
                   the freshest vegetables, and absolutely no shortcuts. Every jar of Pickle House carries the authentic
                   taste of Hyderabad.
@@ -181,18 +183,20 @@ export default function Home() {
                   ].map((item, i) => (
                     <motion.div
                       key={i}
-                      className="flex items-center gap-2 text-sm text-white/80"
+                      className="flex items-center gap-2 text-sm text-brand-black/70"
                       initial={{ opacity: 0, x: -20 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
                       transition={{ delay: i * 0.1 }}
                     >
-                      <CheckCircle size={16} className="text-brand-yellow flex-shrink-0" />
+                      <CheckCircle size={16} className="text-brand-brown flex-shrink-0" />
                       {item}
                     </motion.div>
                   ))}
                 </div>
-                <Link to="/about" className="btn-secondary">Read Our Story →</Link>
+                <Link to="/about" className="inline-block bg-brand-brown text-white font-bold text-base px-6 py-3 rounded-full shadow-sm hover:bg-brand-brown/90 transition-colors">
+                  Read Our Story →
+                </Link>
               </div>
             </FadeUp>
           </div>
@@ -200,7 +204,7 @@ export default function Home() {
       </section>
 
       {/* ── PROMISE SECTION ── */}
-      <section className="py-20 bg-brand-yellow-light">
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeUp>
             <div className="text-center mb-12">
@@ -212,8 +216,8 @@ export default function Home() {
             {features.map((f, i) => (
               <FadeUp key={i} delay={i * 0.07}>
                 <motion.div
-                  className="bg-white rounded-2xl p-6 text-center border-t-4 border-brand-yellow hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-default"
-                  whileHover={{ boxShadow: '0 20px 40px rgba(255,215,0,0.3)' }}
+                  className="bg-white rounded-2xl p-6 text-center border-t-4 border-brand-brown hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-default"
+                  whileHover={{ boxShadow: '0 20px 40px rgba(122,79,30,0.25)' }}
                 >
                   <div className="text-4xl mb-3">{f.icon}</div>
                   <h3 className="font-playfair font-bold text-brand-black text-sm md:text-base mb-1">{f.title}</h3>
@@ -226,13 +230,13 @@ export default function Home() {
       </section>
 
       {/* ── NRI SECTION ── */}
-      <section className="py-20 bg-brand-red">
+      <section className="py-20 bg-white">
         <div className="max-w-5xl mx-auto px-4 text-center">
           <FadeUp>
-            <h2 className="font-playfair text-4xl md:text-5xl font-bold text-white mb-4">
+            <h2 className="font-playfair text-4xl md:text-5xl font-bold text-brand-black mb-4">
               Missing Home?<br />We Ship Worldwide. 🌍
             </h2>
-            <p className="text-white/80 text-lg mb-10 font-poppins">
+            <p className="text-brand-black/70 text-lg mb-10 font-poppins">
               Vacuum-sealed, leak-proof, customs-compliant packaging.<br />
               The taste of Hyderabad delivered to your door.
             </p>
@@ -244,10 +248,10 @@ export default function Home() {
                 <motion.div
                   key={i}
                   className="flex flex-col items-center gap-1"
-                  whileHover={{ scale: 1.2, y: -5 }}
+                  whileHover={{ scale: 1.02, y: -2 }}
                 >
                   <span className="text-4xl">{c.flag}</span>
-                  <span className="text-white/70 text-xs font-semibold">{c.name}</span>
+                  <span className="text-brand-black/60 text-xs font-semibold">{c.name}</span>
                 </motion.div>
               ))}
             </div>
@@ -260,16 +264,16 @@ export default function Home() {
                 { num: '02', text: 'We vacuum-seal & pack customs-compliant' },
                 { num: '03', text: 'Delivered to your door worldwide' },
               ].map((s, i) => (
-                <div key={i} className="bg-white/10 backdrop-blur-sm rounded-2xl p-5 text-white border border-white/20">
-                  <p className="font-playfair text-3xl font-bold text-brand-yellow mb-2">{s.num}</p>
-                  <p className="font-poppins text-sm text-white/80">{s.text}</p>
+                <div key={i} className="bg-white rounded-2xl p-5 text-brand-black border border-brand-brown/20 shadow-sm">
+                  <p className="font-playfair text-3xl font-bold text-brand-brown mb-2">{s.num}</p>
+                  <p className="font-poppins text-sm text-brand-black/70">{s.text}</p>
                 </div>
               ))}
             </div>
           </FadeUp>
 
           <FadeUp delay={0.3}>
-            <Link to="/nri-packing" className="btn-secondary text-lg px-8 py-4">
+            <Link to="/nri-packing" className="inline-block bg-brand-brown text-white font-bold text-lg px-8 py-4 rounded-full shadow-sm hover:bg-brand-brown/90 transition-colors">
               Learn About NRI Packing →
             </Link>
           </FadeUp>
@@ -284,7 +288,7 @@ export default function Home() {
             <h2 className="section-title text-brand-black mb-2">What Our Customers Say</h2>
             <div className="flex items-center justify-center gap-2 mb-10">
               <div className="flex">
-                {[...Array(5)].map((_, i) => <Star key={i} size={20} className="fill-brand-yellow text-brand-yellow" />)}
+                {[...Array(5)].map((_, i) => <Star key={i} size={20} className="fill-brand-brown text-brand-brown" />)}
               </div>
               <span className="font-playfair text-xl font-bold text-brand-black">5.0</span>
               <span className="text-brand-black/50 text-sm">· 100+ Google Reviews</span>
@@ -299,16 +303,16 @@ export default function Home() {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -60 }}
                 transition={{ duration: 0.5 }}
-                className="bg-white rounded-3xl p-8 shadow-xl border-l-4 border-brand-yellow"
+                className="bg-white rounded-3xl p-8 shadow-xl border-l-4 border-brand-brown"
               >
                 <div className="flex justify-center mb-4">
-                  {[...Array(5)].map((_, i) => <Star key={i} size={22} className="fill-brand-yellow text-brand-yellow" />)}
+                  {[...Array(5)].map((_, i) => <Star key={i} size={22} className="fill-brand-brown text-brand-brown" />)}
                 </div>
                 <p className="font-playfair text-brand-black/80 text-lg italic leading-relaxed mb-6">
                   "{reviews[reviewIdx]?.comment}"
                 </p>
                 <div>
-                  <p className="font-playfair font-bold text-brand-red text-lg">{reviews[reviewIdx]?.name}</p>
+                  <p className="font-playfair font-bold text-brand-brown text-lg">{reviews[reviewIdx]?.name}</p>
                   <p className="text-brand-black/50 text-sm">{reviews[reviewIdx]?.location}</p>
                 </div>
               </motion.div>
@@ -317,7 +321,7 @@ export default function Home() {
                   <button
                     key={i}
                     onClick={() => setReviewIdx(i)}
-                    className={`h-2.5 rounded-full transition-all ${i === reviewIdx ? 'bg-brand-red w-6' : 'bg-brand-black/20 w-2.5'}`}
+                    className={`h-2.5 rounded-full transition-all ${i === reviewIdx ? 'bg-brand-brown w-6' : 'bg-brand-black/20 w-2.5'}`}
                   />
                 ))}
               </div>

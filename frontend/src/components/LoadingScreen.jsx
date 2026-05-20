@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { useEffect } from 'react';
-import logo from '../assets/pickleHouseLogo2.png';
+import logo from '../assets/pickleHouseLogoMain.png';
 
 export default function LoadingScreen({ onComplete }) {
   useEffect(() => {
@@ -37,7 +37,7 @@ export default function LoadingScreen({ onComplete }) {
         <motion.img
           src={logo}
           alt="Pickle House"
-          className="h-36 w-auto object-contain mx-auto mb-4"
+          className="h-24 w-auto object-contain mx-auto mb-4"
           animate={{ scale: [1, 1.05, 1] }}
           transition={{ duration: 1.5, delay: 0.5, repeat: Infinity }}
         />
