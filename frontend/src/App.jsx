@@ -1,13 +1,11 @@
-import { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, useLocation, Navigate } from 'react-router-dom';
-import { AnimatePresence, motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { Toaster } from 'react-hot-toast';
 
 import { CartProvider } from './context/CartContext';
 import { AuthProvider } from './context/AuthContext';
 import { LangProvider } from './context/LangContext';
 
-import LoadingScreen from './components/LoadingScreen';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import CartDrawer from './components/CartDrawer';
@@ -101,17 +99,12 @@ function AppContent() {
 }
 
 export default function App() {
-  const [loading, setLoading] = useState(true);
-
   return (
     <BrowserRouter>
       <AuthProvider>
         <CartProvider>
           <LangProvider>
-            <AnimatePresence>
-              {loading && <LoadingScreen key="loader" onComplete={() => setLoading(false)} />}
-            </AnimatePresence>
-            {!loading && <AppContent />}
+            <AppContent />
           </LangProvider>
         </CartProvider>
       </AuthProvider>
